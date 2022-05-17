@@ -1,14 +1,13 @@
 <template>
-  <div>Stat
-  <Nav>
-
-  </Nav>
-  </div>
+  <Layout>统计</Layout>
 </template>
 
 <script lang="ts">
+import Layout from '@/components/Layout.vue';
+
 export default {
   name: 'Statistics',
+  components: {Layout},
 };
 </script>
 
