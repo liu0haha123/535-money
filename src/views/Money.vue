@@ -2,7 +2,7 @@
   <Layout class-prefix="layout">
     <NumberPad :value.sync="record.amount" @submit="saveRecord"></NumberPad>
     <Types :value.sync="record.type"></Types>
-    <Notes @update:value="onUpdateNotes"></Notes>
+    <Notes field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"></Notes>
     <Tags :data-source.sync="tags" @update:value="onUpateTags"></Tags>
   </Layout>
 </template>
@@ -31,7 +31,7 @@ type RecordItem = {
 
 @Component({components: {Tags, Notes, Types, NumberPad, Layout},})
 export default class Money extends Vue {
-  tags = ['衣', '食', '住', '行', '车'];
+  tags = tagList;
   recordList: RecordItem[] = recordList;
 
   record: RecordItem = {
