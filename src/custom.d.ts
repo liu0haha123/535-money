@@ -19,5 +19,6 @@ type TagListModel = {
     update: (id: string, name: string) => 'success' | 'duplicated' | 'not found'
 }
 interface Window{
-    tagList: Tag[]
+    tagList: Tag[],
+    createTag:(name:string)=>void
 }
