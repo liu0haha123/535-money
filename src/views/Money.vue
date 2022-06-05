@@ -5,7 +5,7 @@
     <div class="notes">
       <FormItem field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateFormItem"></FormItem>
     </div>
-    <Tags :data-source.sync="tags" @update:value="onUpateTags"></Tags>
+    <Tags :data-source="tags" @update:value="onUpateTags"></Tags>
   </Layout>
 </template>
 
@@ -20,7 +20,6 @@ import {Component} from 'vue-property-decorator';
 import store from '@/store/index2';
 
 
-
 type RecordItem = {
   tags: string[],
   notes: string,
@@ -31,7 +30,7 @@ type RecordItem = {
 
 @Component({components: {FormItem, Tags, Notes: FormItem, Types, NumberPad, Layout},})
 export default class Money extends Vue {
-  tags = store.tagList
+  tags = store.tagList;
   recordList = store.recordList;
 
   record: RecordItem = {
@@ -51,7 +50,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    store.createRecord(this.record)
+    store.createRecord(this.record);
   }
 
 }
