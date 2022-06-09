@@ -1,16 +1,41 @@
 <template>
-  <Layout>统计</Layout>
+  <Layout>
+    <Tabs class-prefix="type" :data-source="typeList" :value.sync="type"/>
+    <Tabs class-prefix="interval" :data-source="intervalList" :value.sync="interval"/>
+    <div>
+      type:{{type}}
+      <br>
+      interval:{{interval}}
+    </div>
+  </Layout>
 </template>
 
 <script lang="ts">
 import Layout from '@/components/Layout.vue';
+import Types from '@/components/Money/Types.vue';
+import Vue from 'vue';
+import {Component} from 'vue-property-decorator';
+import Tabs from '@/components/Tabs.vue';
 
-export default {
-  name: 'Statistics',
-  components: {Layout},
-};
+@Component({components: {Types, Layout, Tabs}})
+export default class Statistics extends Vue {
+  type = '-';
+  interval = 'day';
+  intervalList = [{text: '按天', value: 'day'}, {text: '按周', value: 'week'}, {text: '按月', value: 'month'}];
+  typeList = [{text: '支出', value: '-'}, {text: '支出', value: '+'}];
+}
 </script>
 
 <style lang='scss' scoped>
+::v-deep .type-tabs-item {
+  background-color: white;
 
+  &.selected {
+    background-color: #c4c4c4;
+
+    &::after {
+      display: none;
+    }
+  }
+}
 </style>
