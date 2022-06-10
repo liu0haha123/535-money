@@ -3,7 +3,7 @@ type RecordItem = {
     notes: string,
     type: string,
     amount: number,// 类型
-    createdAt?: Date // 类
+    createdAt?: string // 类
 }
 
 type Tag = {
@@ -30,4 +30,11 @@ interface Window {
         recordList: RecordItem[],
         createRecord: (RecordItem) => void
     };
+}
+
+
+type RootState = {
+    recordList: RecordItem[],
+    tagList: Tag[],
+    currentTag?: Tag
 }
