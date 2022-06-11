@@ -47,12 +47,12 @@ export default class Money extends Vue {
   }
 
 }
-// TODO 这里的样式有坑
+
 </script>
 <style scoped>
 
 /*  不想被scoped控制全局样式放在上面的单独标签*/
-.layout-content {
+::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
