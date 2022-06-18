@@ -16,10 +16,11 @@
 </template>
 
 <script lang="ts">
-
-export default {
-  name: 'Nav'
-};
+import Vue from "vue"
+import Component from "vue-property-decorator";
+export default class Nav extends Vue{
+  
+}
 </script>
 
 <style lang='scss' scoped>
