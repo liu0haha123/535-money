@@ -3,55 +3,59 @@
     <div class="navBar">
       <Icon name="left" class="leftIcon" @click="goBack"></Icon>
       <span class="title">编辑标签</span>
-      <span class="rightIcon"/>
+      <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-      <FormItem :value="currentTag.name" @update:value="update" field-name="标签名" placeholder="请输入标签名"></FormItem>
+      <FormItem
+        :value="currentTag.name"
+        @update:value="update"
+        field-name="标签名"
+        placeholder="请输入标签名"
+      ></FormItem>
     </div>
     <div class="button-wrapper">
       <Button @click="remove">删除标签</Button>
     </div>
-
   </Layout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
-import FormItem from '@/components/Money/FormItem.vue';
-import Button from '@/components/Button.vue';
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+import FormItem from '@/components/Money/FormItem.vue'
+import Button from '@/components/Button.vue'
 
 @Component({
-  components: {Button, FormItem},
+  components: { Button, FormItem },
 })
 export default class EditLabel extends Vue {
   get currentTag() {
-    return this.$store.state.currentTag;
+    return this.$store.state.currentTag
   }
 
   created() {
-    const id = this.$route.params.id;
-    this.$store.commit('fetchTags');
-    this.$store.commit('setCurrentTag', id);
+    const id = this.$route.params.id
+    this.$store.commit('fetchTags')
+    this.$store.commit('setCurrentTag', id)
     if (!this.currentTag) {
-      this.$router.replace('/404');
+      this.$router.replace('/404')
     }
   }
 
   update(name: string) {
     if (this.currentTag) {
-      this.$store.commit('updateTag', {id: this.currentTag.id, name: name});
+      this.$store.commit('updateTag', { id: this.currentTag.id, name: name })
     }
   }
 
   remove() {
     if (this.currentTag) {
-      this.$store.commit('removeTag', this.currentTag.id);
+      this.$store.commit('removeTag', this.currentTag.id)
     }
   }
 
   goBack() {
-    this.$router.back();
+    this.$router.back()
   }
 }
 </script>
@@ -72,11 +76,9 @@ export default class EditLabel extends Vue {
   }
 
   > .rightIcon {
-
     width: 24px;
     height: 24px;
   }
-
 }
 
 .form-wrapper {
@@ -87,6 +89,14 @@ export default class EditLabel extends Vue {
 .button-wrapper {
   text-align: center;
   padding: 16px;
-  margin-top: 44-16px;
+  margin-top: 28px;
+
+  .button {
+    background-color: #767676;
+    color: white;
+    border-radius: 32px;
+    height: 40px;
+    padding: 0 16px;
+  }
 }
 </style>
