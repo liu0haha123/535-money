@@ -3,7 +3,7 @@ type RecordItem = {
     notes: string,
     type: string,
     amount: number,// 类型
-    createdAt?: string // 类
+    createdAt?: string, // 类
 }
 
 type Tag = {
